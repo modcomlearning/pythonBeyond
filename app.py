@@ -7,6 +7,7 @@ app = Flask(__name__)
 # static folder - used to place css, js, images
 # templates - used to place HTML files
 
+
 @app.route('/')
 def home():
     # run this route using  http://127.0.0.1:5000/
