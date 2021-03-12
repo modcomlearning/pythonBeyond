@@ -1,5 +1,5 @@
 import flask
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 # Home Page, Login, register, navigation
@@ -7,10 +7,10 @@ app = Flask(__name__)
 # static folder - used to place css, js, images
 # templates - used to place HTML files
 
-
 @app.route('/')
 def home():
-    return 'This is my good homepage'
+    # run this route using  http://127.0.0.1:5000/
+    return render_template('home.html')
 
 
 @app.route('/login') # decorator
