@@ -2,11 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <form action="">
+  <h1 class="jumbotron">My Register</h1>
+  <p style="margin-left:5%; margin-right:5%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt earum enim eveniet fugiat harum illum modi molestias nisi odit omnis quae,
+      quasi quibusdam recusandae, sunt totam unde ut voluptas?</p>
 
-    </form>
+  <section class="row" style="margin-left:5%;">
+
+      <div class="col-md-6">
+          <form action="/register" method="post">
+              <input type="text" name="username" placeholder="Your Username"
+                     class="form-control">
+              <br>
+
+              <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
+              <br>
+
+            <input type="email" name="email" placeholder="Your Email" class="form-control">
+            <br>
+
+              <input type="text" name="residence" class="form-control" placeholder="Residence">
+              <br>
+
+            <input type="password" name="password" placeholder="Your Password" class="form-control">
+            <br>
+
+              <input type="password" name="confirm" placeholder="Confirm Your Password" class="form-control">
+            <br>
+
+
+            <input type="submit" value="Register Now" class="btn btn-success">
+          </form>
+
+          <a href="/login">Already have an account? Login </a> <br>
+
+      </div>
+
+      <div class="col-md-6">
+        <!--put an image here-->
+          <img src="../static/pic2.jpeg" alt="" class="img-fluid" width="50%">
+      </div>
+
+  </section>
+
+
 </body>
 </html>
