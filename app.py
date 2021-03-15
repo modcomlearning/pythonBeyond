@@ -17,7 +17,7 @@ def home():
 @app.route('/login') # decorator
 def login():
     # Create a login in HTML , email, password and button
-    return 'This my nice login...'
+    return render_template('login.html')
 
 
 @app.route('/register')
@@ -25,14 +25,12 @@ def register():
     # do a registration page, username, email, password, confirm password,
     # location, phone, gender, dob
     # and a button
-    return 'Here is our good registration route'
+    return render_template('register.html')
 
 
 @app.route('/cars')
 def cars():
     return 'These are our latest cars'
-
-
 
 
 # create a dummy domain/base URL
