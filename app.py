@@ -42,7 +42,6 @@ def cars():
 from flask import request
 @app.route('/payroll', methods = ['POST','GET'])
 def payroll():
-
     if request.method == 'POST':
         basic = request.form['basic']
         allowances = request.form['allowances']
@@ -51,12 +50,19 @@ def payroll():
 
         # above we received what was posted from the form
         # get gross
-        gross = basic + allowances
+        gross = float(basic) + float(allowances)
 
         # get net
-        netpay = gross - (nssf + nhif)
+        netpay = gross - (float(nssf) + float(nhif))
 
-        
+        # we return the answers to the template
+        return render_template('payroll.html', gross = gross, netpay = netpay)
+
+    else:  # the user did not click the button
+        return render_template('payroll.html')
+
+
+
 
 
 
