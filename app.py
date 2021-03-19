@@ -37,6 +37,35 @@ def cars():
 # Agenda: connection between templates and your routes
 # How to post data from a template to a route in python and vise versa
 # Using a payroll calc.
+# back end, backend receives from the from the form
+
+from flask import request
+@app.route('/payroll', methods = ['POST','GET'])
+def payroll():
+
+    if request.method == 'POST':
+        basic = request.form['basic']
+        allowances = request.form['allowances']
+        nssf = request.form['nssf']
+        nhif = request.form['nhif']
+
+        # above we received what was posted from the form
+        # get gross
+        gross = basic + allowances
+
+        # get net
+        netpay = gross - (nssf + nhif)
+
+        
+
+
+
+
+
+
+
+
+
 
 
 
