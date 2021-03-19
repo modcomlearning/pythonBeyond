@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payroll Calculation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <h1 class="jumbotron">My Payroll Calc</h1>
+
+    <section class="row">
+        <div class="col-md-6">
+            <form action="/payroll" method="post">
+                <input type="text" name="basic" placeholder="Enter Your Basic">
+                <br><br>
+
+                <input type="text" name="allowances" placeholder="Enter Your Total Allowances">
+                <br><br>
+
+                <input type="text" name="nhif" placeholder="Enter Your NHIF">
+                <br><br>
+
+                <input type="text" name="nssf" placeholder="Enter Your NSSF">
+                <br><br>
+
+                <input type="submit" value="Find Netpay">
+            </form>
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+
+    </section>
+
+</body>
+</html>

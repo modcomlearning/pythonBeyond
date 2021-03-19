@@ -33,6 +33,16 @@ def cars():
     return 'These are our latest cars'
 
 
+
+# Agenda: connection between templates and your routes
+# How to post data from a template to a route in python and vise versa
+# Using a payroll calc.
+
+
+
+
+
+
 # create a dummy domain/base URL
 # use double underscores
 if __name__  == '__main__':
