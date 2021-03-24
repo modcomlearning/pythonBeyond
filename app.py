@@ -65,8 +65,46 @@ def payroll():
 
 
 # this route will be used to add a patient to our uhai_db
-@app.route("/add")
+from flask import request
+import pymysql
+@app.route("/add", methods = ['POST','GET'])
 def add():
+    if request.method =='POST':
+        patient_id = request.form['patient_id']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        surname = request.form['surname']
+        email = request.form['email']
+        phone = request.form['phone']
+        address = request.form['address']
+        next_of_kin = request.form['next_of_kin']
+        next_of_kin_phone = request.form['next_of_kin_phone']
+
+        # above we captured the details from the form
+        # Next we save to the database
+
+        connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # we pause, then we go create a template for add.html
     return render_template('add.html')
 
