@@ -64,6 +64,19 @@ def payroll():
 
 
 
+# this route will be used to add a patient to our uhai_db
+@app.route("/add")
+def add():
+    # we pause, then we go create a template for add.html
+    return render_template('add.html')
+
+
+
+
+
+
+
+
 
 
 
