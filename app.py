@@ -86,36 +86,19 @@ def add():
         connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
 
         # we now do an insert sql query
-        sql = "insert into patients_tbl(patient_id, first_name, last_name, surname, email, phone, address, next_of_kin,next_of_kin_phone)  VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql = "insert into patients_tbl(patient_id, first_name, last_name, surname, email, phone, address, next_of_kin, next_of_kin_phone)  VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         # run above sql, you run sql using cursor
         cursor = connection.cursor()
         # run/execute sql and provide the values
         cursor.execute(sql, (patient_id, first_name, last_name, surname, email, phone, address, next_of_kin, next_of_kin_phone))
+        connection.commit()
+        return render_template('add.html')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # we pause, then we go create a template for add.html
-    return render_template('add.html')
+    else:
+        # we pause, then we go create a template for add.html
+        return render_template('add.html')
 
 
 
