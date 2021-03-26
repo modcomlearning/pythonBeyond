@@ -7,32 +7,34 @@
 </head>
 <body>
      <h1 class="jumbotron">Add Patient</h1>
-     <form action="/add" method="post">
-         <input type="number" name="patient_id" placeholder="Enter Patient ID">
+
+     <b>{{message}}</b> <br>
+     <form action="/add" method="post" style="text-align:center">
+         <input type="number" name="patient_id" placeholder="Enter Patient ID" required>
          <br><br>
 
-         <input type="text" name="first_name" placeholder="Enter First Name">
+         <input type="text" name="first_name" placeholder="Enter First Name" required>
          <br><br>
 
-         <input type="text" name="last_name" placeholder="Enter Last Name">
+         <input type="text" name="last_name" placeholder="Enter Last Name" required>
          <br><br>
 
-         <input type="text" name="surname" placeholder="Enter Surname">
+         <input type="text" name="surname" placeholder="Enter Surname" required>
          <br><br>
 
-         <input type="email" name="email" placeholder="Enter Email">
+         <input type="email" name="email" placeholder="Enter Email" required>
          <br><br>
 
-         <input type="tel" name="phone" placeholder="Enter Phone">
+         <input type="tel" name="phone" placeholder="Enter Phone" required>
          <br><br>
 
-         <input type="text" name="address" placeholder="Enter Address">
+         <input type="text" name="address" placeholder="Enter Address" required>
          <br><br>
 
-         <input type="text" name="next_of_kin" placeholder="Enter Next of Kin Name">
+         <input type="text" name="next_of_kin" placeholder="Enter Next of Kin Name" required>
          <br><br>
 
-         <input type="text" name="next_of_kin_phone" placeholder="Enter Next of Kin phone">
+         <input type="text" name="next_of_kin_phone" placeholder="Enter Next of Kin phone" required>
          <br><br>
 
          <input type="submit" value="ADD PATIENT" class = "btn btn-primary">

@@ -83,7 +83,7 @@ def add():
         # above we captured the details from the form
         # Next we save to the database
 
-        connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
 
         # we now do an insert sql query
         sql = "insert into patients_tbl(patient_id, first_name, last_name, surname, email, phone, address, next_of_kin, next_of_kin_phone)  VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -91,9 +91,13 @@ def add():
         # run above sql, you run sql using cursor
         cursor = connection.cursor()
         # run/execute sql and provide the values
+
+
         cursor.execute(sql, (patient_id, first_name, last_name, surname, email, phone, address, next_of_kin, next_of_kin_phone))
         connection.commit()
-        return render_template('add.html')
+        return render_template('add.html', message= "Record Saved Successfully, Thank you.")
+
+
 
 
     else:
@@ -102,10 +106,25 @@ def add():
 
 
 
+# Assignment will on saving a doctor.
+# You will create a template, a route and a table.
+# fields in the table will be doctor_id (PK), first_name, last_name, surname, email, phone,
+# exp, kra_pin, nssf_no, hhif_no
+
+# This route will view wall patients
+@app.route("/view_patient")
+def view_patient():
+    connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+    sql = "select * from patients_tbl"
+
+    # create cursor
+    cursor = connection.cursor()
+
+    # execute sql using the cursor
+    cursor.execute(sql)
 
 
-
-
+    
 
 
 
