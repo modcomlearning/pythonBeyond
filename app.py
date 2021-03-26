@@ -112,8 +112,8 @@ def add():
 # exp, kra_pin, nssf_no, hhif_no
 
 # This route will view wall patients
-@app.route("/view_patient")
-def view_patient():
+@app.route("/view_patients")
+def view_patients():
     connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
     sql = "select * from patients_tbl"
 
@@ -130,7 +130,7 @@ def view_patient():
     else:
         # here means there are patients, fetch all
         rows = cursor.fetchall()
-        return render_template('view_patient.html', rows = rows)
+        return render_template('view_patients.html', rows = rows)
 
 
 
