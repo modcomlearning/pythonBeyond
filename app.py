@@ -123,8 +123,18 @@ def view_patient():
     # execute sql using the cursor
     cursor.execute(sql)
 
+    # you check are there any  patients
+    if cursor.rowcount == 0:
+        return render_template('view_patients.html', message = "No patients, Please navigate to add patient page")
 
-    
+    else:
+        # here means there are patients, fetch all
+        rows = cursor.fetchall()
+        return render_template('view_patient.html', rows = rows)
+
+
+
+
 
 
 
