@@ -111,7 +111,7 @@ def add():
 # fields in the table will be doctor_id (PK), first_name, last_name, surname, email, phone,
 # exp, kra_pin, nssf_no, hhif_no
 
-# This route will view wall patients
+# This route will view all patients
 @app.route("/view_patients")
 def view_patients():
     connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
@@ -135,6 +135,30 @@ def view_patients():
 
 
 # Today:  searching records
+@app.route('/search_patient', methods = ['POST','GET'])
+def search_patient():
+    if request.method == 'POST':
+        pass
+
+
+    else:
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+        sql = "select * from patients_tbl"
+
+        # create cursor
+        cursor = connection.cursor()
+
+        # execute sql using the cursor
+        cursor.execute(sql)
+
+        # you check are there any  patients
+        if cursor.rowcount == 0:
+            return render_template('search_patient.html', message="No patients, Please navigate to add patient page")
+
+        else:
+            # here means there are patients, fetch all
+            rows = cursor.fetchall()
+            return render_template('search_patient.html', rows=rows)
 
 
 
