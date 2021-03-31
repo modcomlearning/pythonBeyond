@@ -23,9 +23,11 @@
       
   </section>
   <br><br>
-   {{message}}
+
 
    <div class="bg-secondary text-white" style="margin-left: 2%; padding:2%;">
+       {{message}}
+
    {% for row in rows %}
        <b> Patient ID:</b> {{row[0]}} <br>
        <b> Full Name: </b> {{row[1]}}  {{row[2]}}  {{row[3]}} <br>
@@ -37,7 +39,7 @@
        <a href="" class="btn btn-info">Lab Report</a>
        <br><br>
    {% endfor %}
-       
+
 
 
 </body>
