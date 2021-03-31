@@ -138,12 +138,31 @@ def view_patients():
 @app.route('/search_patient', methods = ['POST','GET'])
 def search_patient():
     if request.method == 'POST':
-        pass
+
+        patient_id = request.form['patient_id']
+
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+        sql = "select * from patients_tbl where patient_id = %s"
+
+        # create cursor
+        cursor = connection.cursor()
+
+        # execute sql using the cursor, provide the patient id
+        cursor.execute(sql, (patient_id))
+        # you check are there any  patients
+        if cursor.rowcount == 0:
+            return render_template('search_patient.html', message="Patient ID Does not exist")
+
+        else:
+            # here means there are patients, fetch all
+            rows = cursor.fetchall()
+            return render_template('search_patient.html', rows=rows)
+
 
 
     else:
         connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
-        sql = "select * from patients_tbl"
+        sql = "select * from patients_tbl order by patient_id DESC limit 20"
 
         # create cursor
         cursor = connection.cursor()
