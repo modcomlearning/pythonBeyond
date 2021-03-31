@@ -17,18 +17,27 @@
           <form action="/search_patient" method="post">
               <input type="text" name="patient_id" placeholder="Search By Patient ID">
               <br><br>
-              <input type="submit" value="SEARCH PATIENT" class="btn btn-primary">
+              <input type="submit" value="SEARCH PATIENT" class="btn btn-info">
           </form>
       </div>
       
   </section>
+  <br><br>
+   {{message}}
 
-
-
-
-
-
-
+   <div class="bg-secondary text-white" style="margin-left: 2%; padding:2%;">
+   {% for row in rows %}
+       <b> Patient ID:</b> {{row[0]}} <br>
+       <b> Full Name: </b> {{row[1]}}  {{row[2]}}  {{row[3]}} <br>
+       <b> Email:</b> {{row[4]}} <br>
+       <b> Phone: </b>{{row[5]}} <br>
+       <b> Address: </b> {{row[6]}} <br>
+       <b> Next of Kin:</b> {{row[7]}} <br>
+       <b> Next of Kin Phone:</b> {{row[8]}}<br><br>
+       <a href="" class="btn btn-info">Lab Report</a>
+       <br><br>
+   {% endfor %}
+       
 
 
 </body>

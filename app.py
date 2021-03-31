@@ -138,7 +138,6 @@ def view_patients():
 @app.route('/search_patient', methods = ['POST','GET'])
 def search_patient():
     if request.method == 'POST':
-
         patient_id = request.form['patient_id']
 
         connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
