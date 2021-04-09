@@ -33,6 +33,18 @@ def login():
         cursor = connection.cursor()
         cursor.execute(sql, (email, password))
 
+        # check if no match found, Failure, send back a message to login template
+        if cursor.rowcount < 1:
+            return render_template('login.html', message = "Wrong Credentials, Try Again")
+
+        # if 1 match is found , its a success, take user to next screen /add
+        elif cursor.rowcount == 1:
+            return redirect('/add')
+        # here means its either a rowcount of 2, means there are duplicates email
+        else:
+            return render_template('login.html', message="Contact Admin.")
+    else:
+        return render_template('login.html')
 
 
 
