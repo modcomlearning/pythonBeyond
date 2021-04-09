@@ -23,7 +23,6 @@ def login():
     if request.method =='POST':
         email = request.form['email']
         password = request.form['password']
-
         # create a connections
         connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
 
@@ -39,25 +38,12 @@ def login():
 
         # if 1 match is found , its a success, take user to next screen /add
         elif cursor.rowcount == 1:
-            return redirect('/add')
-        # here means its either a rowcount of 2, means there are duplicates email
+            return redirect('/search_patient')
+        # here means its either a rowcount of 2 or more, means there are duplicates email
         else:
             return render_template('login.html', message="Contact Admin.")
     else:
         return render_template('login.html')
-
-
-
-
-
-
-
-
-    return render_template('login.html')
-
-
-
-
 
 
 
