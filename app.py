@@ -14,10 +14,42 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/login') # decorator
+
+
+from flask import request, redirect
+@app.route('/login', methods = ['POST','GET']) # decorator
 def login():
     # Create a login in HTML , email, password and button
+    if request.method =='POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        # create a connections
+        connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
+
+        sql = "select * from users where email = %s and password = %s"
+
+        # create a cursor and execute above sql
+        cursor = connection.cursor()
+        cursor.execute(sql, (email, password))
+
+
+
+
+
+
+
+
+
     return render_template('login.html')
+
+
+
+
+
+
+
+
 
 
 @app.route('/register')
