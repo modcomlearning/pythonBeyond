@@ -8,6 +8,18 @@
 <body>
      <h1 class="jumbotron">Add Patient</h1>
 
+     <div class="text-center">
+         <a href="/add" class="btn btn-info">Add Patient</a>  /
+         <a href="/view_patients" class="btn btn-info">View Patients</a>  /
+         <a href="/search_patient" class="btn btn-info">Search Patient</a>  /
+         <a href="/view_doctors" class="btn btn-info">View Doctors</a>  /
+         <br><br>
+         <a href="/" class="btn btn-info">Home</a>  /
+     </div>
+     
+
+
+
      <b>{{message}}</b> <br>
      <form action="/add" method="post" style="text-align:center">
          <input type="number" name="patient_id" placeholder="Enter Patient ID" required>

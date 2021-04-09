@@ -182,17 +182,6 @@ def search_patient():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # create a dummy domain/base URL
 # use double underscores
 if __name__  == '__main__':
