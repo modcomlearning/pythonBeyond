@@ -50,6 +50,13 @@ def login():
     else:
         return render_template('login.html')
 
+# this route is used to clear the sessions
+@app.route('/logout')
+def logout():
+    session.pop('key',None)
+    return redirect('/login')
+
+
 
 
 @app.route('/register')
@@ -143,6 +150,7 @@ def add():
 # fields in the table will be doctor_id (PK), first_name, last_name, surname, email, phone,
 # exp, kra_pin, nssf_no, hhif_no
 
+
 # This route will view all patients
 @app.route("/view_patients")
 def view_patients():
@@ -163,6 +171,9 @@ def view_patients():
         # here means there are patients, fetch all
         rows = cursor.fetchall()
         return render_template('view_patients.html', rows = rows)
+
+
+
 
 
 
