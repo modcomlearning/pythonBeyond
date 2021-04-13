@@ -181,6 +181,7 @@ def view_patients():
 
 
 
+
 # Today:  searching records
 @app.route('/search_patient', methods = ['POST','GET'])
 def search_patient():
