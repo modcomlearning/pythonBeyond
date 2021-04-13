@@ -2,11 +2,13 @@ import flask
 from flask import Flask, render_template
 app = Flask(__name__)
 
+
+# set key to encrypt our sessions
+app.secret_key = "@#$^kWe%^28DDgg^7@"
 # Home Page, Login, register, navigation
 # this is the default route,
 # static folder - used to place css, js, images
 # templates - used to place HTML files
-
 
 @app.route('/')
 def home():
@@ -15,8 +17,9 @@ def home():
 
 
 
-
+# sessions management
 from flask import request, redirect
+from flask import session
 @app.route('/login', methods = ['POST','GET']) # decorator
 def login():
     # Create a login in HTML , email, password and button
@@ -24,10 +27,8 @@ def login():
         email = request.form['email']
         password = request.form['password']
         # create a connections
-        connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
-
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
         sql = "select * from users where email = %s and password = %s"
-
         # create a cursor and execute above sql
         cursor = connection.cursor()
         cursor.execute(sql, (email, password))
@@ -38,15 +39,16 @@ def login():
 
         # if 1 match is found , its a success, take user to next screen /add
         elif cursor.rowcount == 1:
+
+            # since we have the user email, we use it as a session
+            # you store the email using session['key']
+            session['key'] = email
             return redirect('/search_patient')
         # here means its either a rowcount of 2 or more, means there are duplicates email
         else:
             return render_template('login.html', message="Contact Admin.")
     else:
         return render_template('login.html')
-
-
-
 
 
 
