@@ -50,13 +50,15 @@ def login():
     else:
         return render_template('login.html')
 
+
 # this route is used to clear the sessions
 @app.route('/logout')
 def logout():
     session.pop('key',None)
     return redirect('/login')
 
-
+# on chrome ctrl + shift + i
+# on firefox - shift + f9
 
 
 @app.route('/register')
@@ -108,6 +110,7 @@ from flask import request
 import pymysql
 @app.route("/add", methods = ['POST','GET'])
 def add():
+
     if request.method =='POST':
         patient_id = request.form['patient_id']
         first_name = request.form['first_name']
@@ -152,26 +155,27 @@ def add():
 
 
 # This route will view all patients
+# this route is session protected
 @app.route("/view_patients")
 def view_patients():
-    connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
-    sql = "select * from patients_tbl"
+    if 'key' in session:
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+        sql = "select * from patients_tbl"
+        # create cursor
+        cursor = connection.cursor()
 
-    # create cursor
-    cursor = connection.cursor()
+        # execute sql using the cursor
+        cursor.execute(sql)
 
-    # execute sql using the cursor
-    cursor.execute(sql)
-
-    # you check are there any  patients
-    if cursor.rowcount == 0:
-        return render_template('view_patients.html', message = "No patients, Please navigate to add patient page")
-
+        # you check are there any  patients
+        if cursor.rowcount == 0:
+            return render_template('view_patients.html', message = "No patients, Please navigate to add patient page")
+        else:
+            # here means there are patients, fetch all
+            rows = cursor.fetchall()
+            return render_template('view_patients.html', rows = rows)
     else:
-        # here means there are patients, fetch all
-        rows = cursor.fetchall()
-        return render_template('view_patients.html', rows = rows)
-
+        return redirect('/login')
 
 
 
