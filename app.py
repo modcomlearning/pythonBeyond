@@ -232,6 +232,30 @@ def search_patient():
 
 
 
+@app.route('/phones')
+def phones():
+    connection = pymysql.connect(host='localhost', user='root', password='', database='uhai_hospital_db')
+    sql = "select * from products"
+    # create cursor
+    cursor = connection.cursor()
+
+    # execute sql using the cursor
+    cursor.execute(sql)
+
+    # you check are there any  patients
+    if cursor.rowcount == 0:
+        return render_template('products.html', message = "No Products")
+    else:
+            # here means there are patients, fetch all
+        rows = cursor.fetchall()
+        return render_template('products.html', rows = rows)
+
+
+
+
+
+
+
 # create a dummy domain/base URL
 # use double underscores
 if __name__  == '__main__':
