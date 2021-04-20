@@ -252,6 +252,19 @@ def phones():
 
 
 
+@app.route('/single_display/<product_id>')
+def single_display(product_id):
+    connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+    cursor = connection.cursor()
+    # execute the query using the cursor
+    cursor.execute("select * from products where product_id = %s", (product_id))
+    # check if no records were found
+    if cursor.rowcount < 1:
+        return render_template('single_display.html', message="This Product does not exist")
+    else:
+        # return all rows found
+        rows = cursor.fetchall()
+        return render_template('single_display.html', rows=rows)
 
 
 
