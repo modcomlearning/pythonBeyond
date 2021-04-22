@@ -110,7 +110,6 @@ from flask import request
 import pymysql
 @app.route("/add", methods = ['POST','GET'])
 def add():
-
     if request.method =='POST':
         patient_id = request.form['patient_id']
         first_name = request.form['first_name']
@@ -138,9 +137,6 @@ def add():
         cursor.execute(sql, (patient_id, first_name, last_name, surname, email, phone, address, next_of_kin, next_of_kin_phone))
         connection.commit()
         return render_template('add.html', message= "Record Saved Successfully, Thank you.")
-
-
-
 
     else:
         # we pause, then we go create a template for add.html
@@ -265,6 +261,40 @@ def single_display(product_id):
         # return all rows found
         rows = cursor.fetchall()
         return render_template('single_display.html', rows=rows)
+
+
+
+
+@app.route("/order", methods = ['POST','GET'])
+def order():
+    if request.method =='POST':
+        id = request.form['id']
+        qtty = request.form['qtty']
+        email = request.form['email']
+        phone = request.form['phone']
+        connection = pymysql.connect(host='localhost', user='root', password='1234D!@#$', database='uhai_hospital_db')
+
+        # we now do an insert sql query
+        sql = "insert into orders(product_id, qtty, email, phone)  VALUES(%s,%s,%s,%s)"
+
+        # run above sql, you run sql using cursor
+        cursor = connection.cursor()
+        # run/execute sql and provide the values
+
+        cursor.execute(sql, (
+        id, qtty, email, phone))
+        connection.commit()
+        return render_template('complete.html', message="Order Made Successfully, Thank you.")
+
+    else:
+        # we pause, then we go create a template for add.html
+        return render_template('complete.html')
+
+
+
+
+
+
 
 
 
