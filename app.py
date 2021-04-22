@@ -281,20 +281,17 @@ def order():
         cursor = connection.cursor()
         # run/execute sql and provide the values
 
-        cursor.execute(sql, (
-        id, qtty, email, phone))
-        connection.commit()
-        return render_template('complete.html', message="Order Made Successfully, Thank you.")
+        try:
+            cursor.execute(sql, (
+            id, qtty, email, phone))
+            connection.commit()
+            return render_template('complete.html', message="Order Made Successfully, Thank you.")
+        except:
+            return render_template('complete.html', message="Order Failed, Thank you.")
 
     else:
         # we pause, then we go create a template for add.html
         return render_template('complete.html')
-
-
-
-
-
-
 
 
 
